@@ -1,9 +1,12 @@
 import Login from "./pages/Login";
+import ContextProvider from "./context/contextProvider";
 
 function App() {
   return (
     <div>
-      <Login />
+      <ContextProvider>
+        <Login />
+      </ContextProvider>
     </div>
   );
 }
