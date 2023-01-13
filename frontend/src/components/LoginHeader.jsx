@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Axios from 'axios';
 import appContext from "../context/appContext";
 
 function LoginHeader() {
@@ -19,6 +20,17 @@ function LoginHeader() {
       console.log(password);
     }
   };
+
+  const login = () => {
+    Axios.post('http://localhost:3001/', {
+      username,
+      password
+    }).then((res) => {
+      
+    }).catch((e) => {
+      console.log(e) 
+    });
+  }
 
 
   return(
@@ -44,7 +56,8 @@ function LoginHeader() {
         placeholder="password"
       />
       <div className="md:flex block">
-        <button 
+        <button
+          onClick={login} 
           className="bg-blue-800 md:bg-neutral-500 p-1 px-2 my-16 md:my-0 md:mr-3 flex md:block ml-auto mr-auto rounded-2xl"> 
           Entrar 
         </button>
