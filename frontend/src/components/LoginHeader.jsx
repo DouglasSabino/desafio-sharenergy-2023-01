@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Axios from 'axios';
 import appContext from "../context/appContext";
+import { toast } from 'react-toastify';
 
 function LoginHeader() {
 
@@ -28,7 +29,7 @@ function LoginHeader() {
     }).then((res) => {
       
     }).catch((e) => {
-      console.log(e) 
+      toast.error(e.response.data.message);
     });
   }
 
