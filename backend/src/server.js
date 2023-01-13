@@ -1,7 +1,9 @@
 // const { routerUser } = require('./routers/routerUser');
 const { routerLogin } = require('./routers/routerLogin');
+const { handleError } = require('./middlewares/handleError');
 const express = require('express');
 const cors = require('cors');
+require('dotenv/config');
 
 const app = express();
 app.use(
@@ -12,6 +14,9 @@ app.use(
 app.use(express.json());
 app.use(cors());
 
-app.use('/', routerLogin);
+const { PORT } = process.env;
 
-app.listen(3001, () => console.log('Listen Port 3001'))
+app.use('/', routerLogin);
+app.use(handleError);
+
+app.listen(PORT, () => console.log(`Listen Port ${PORT}`));
