@@ -5,7 +5,6 @@ const loginModel = {
     const db = await connection();
     const { username } = body;
     const [user] = await db.collection('user').find({ user: username }).toArray();
-    console.log(user);
     return user;
   },
 };

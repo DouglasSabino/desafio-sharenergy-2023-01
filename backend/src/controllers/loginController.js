@@ -6,8 +6,8 @@ const loginController = {
   login: async (req, res, next) => {
    try {
      await schemaLogin.validationLogin(req.body);
-     const user = await loginService.login(req.body);
-     return res.status(200).json(user);
+     const [user, token] = await loginService.login(req.body);
+     return res.status(200).json([user, token]);
    } catch (error) {
     next(error);
    }

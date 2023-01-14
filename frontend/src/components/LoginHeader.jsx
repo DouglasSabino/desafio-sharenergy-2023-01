@@ -2,9 +2,10 @@ import { useContext } from "react";
 import Axios from 'axios';
 import appContext from "../context/appContext";
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 function LoginHeader() {
-
+  const history = useNavigate();
   const { 
     username, 
     setUserName, 
@@ -27,7 +28,9 @@ function LoginHeader() {
       username,
       password
     }).then((res) => {
-      
+     localStorage.setItem("token", res.data[1]);
+     toast.success(`Olá ${res.data[0].user}, login efetuado com sucesso !!`);
+     history("/home");
     }).catch((e) => {
       toast.error(e.response.data.message);
     });
