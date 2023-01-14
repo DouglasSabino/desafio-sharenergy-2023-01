@@ -8,6 +8,9 @@ function ContextProvider({ children }) {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(true);
+  const [indexStart, setIndexStart] = useState(0);
+  const [indexEnd, setIndexEnd] = useState(8);
+  const [page, setPage] = useState('1');
 
   const contextValue = {
     user, 
@@ -19,7 +22,13 @@ function ContextProvider({ children }) {
     password,
     setPassword,
     loading, 
-    setLoading
+    setLoading,
+    indexStart, 
+    setIndexStart,
+    indexEnd, 
+    setIndexEnd,
+    page, 
+    setPage
   };
   
   return (
