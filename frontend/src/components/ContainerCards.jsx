@@ -3,11 +3,13 @@ import { useEffect } from 'react';
 import Axios from 'axios';
 import { useContext } from "react";
 import appContext from "../context/appContext";
+import Loading from './Loading';
 
 function ContainerCards() {
   const { 
     cards, 
-    setCards, 
+    setCards,
+    loading, 
     setLoading, 
     indexStart, 
     indexEnd, 
@@ -63,7 +65,14 @@ async function getRamdomUsers() {
 
   return (
   <div>
-    <div className='ml-32 mt-5 mb-2 flex text-2xl'>
+    {
+      loading ? (
+      <div className="border border-black ml-auto flex flex-wrap justify-around gap-2 pt-6 mt-16 pt-52 shadow-lg shadow-black mr-auto h-[80vh] mt-3 w-[100rem] md:bg-[#54A3A2] rounded-2xl shadow-2xl shadow-black pb-5">
+        <Loading />
+      </div>  
+      ) : (
+        <div>
+          <div className='ml-32 mt-5 mb-2 flex text-2xl'>
       <spam className="font-roboto mr-2">Paginas: </spam>
       <div 
         onClick={handleClick}
@@ -96,6 +105,11 @@ async function getRamdomUsers() {
      }) 
      }
   </div>
+        </div>
+      )
+    }
+   
+    
   </div>
 );
 }

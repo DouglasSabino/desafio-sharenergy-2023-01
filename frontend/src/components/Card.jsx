@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import appContext from "../context/appContext";
+import { CircleLoader } from 'react-spinners';
 
 function Card(props) {
   const { cards, setCards, loading } = useContext(appContext);
@@ -10,7 +11,6 @@ function Card(props) {
 
   return(
     <div className="h-20 w-80 text-black">
-      {loading ? <div>Loading ...</div> : (
       <div className="flex-col justify-center shadow-lg shadow-black bg-[#D6DF33] rounded-2xl">
         <img className="pt-6 w-[10vw] ml-auto mr-auto" src={props.picture}/>
         <div className="bg-[#CCCCCC] shadow-black mb-10 rounded-2xl">
@@ -20,7 +20,6 @@ function Card(props) {
           <h3 className="pb-6 ml-3 font-roboto">{`Idade: ${props.age}`}</h3>
         </div>
       </div>  
-      )}
     </div>
   );
 }
