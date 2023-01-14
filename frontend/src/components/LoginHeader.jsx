@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom';
 
 function LoginHeader() {
   const history = useNavigate();
-  const { 
+  const {
+    user, 
+    setUser,
     username, 
     setUserName, 
     password, 
@@ -29,9 +31,11 @@ function LoginHeader() {
       password
     }).then((res) => {
      localStorage.setItem("token", res.data[1]);
+     setUser(res.data[0]);
      toast.success(`Olá ${res.data[0].user}, login efetuado com sucesso !!`);
      history("/home");
     }).catch((e) => {
+      console.log(e);
       toast.error(e.response.data.message);
     });
   }
