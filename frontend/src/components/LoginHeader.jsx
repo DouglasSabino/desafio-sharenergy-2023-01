@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 function LoginHeader() {
   const history = useNavigate();
   const {
-    user, 
     setUser,
     username, 
     setUserName, 
@@ -52,14 +51,14 @@ function LoginHeader() {
       <input 
         name="fieldUser" 
         onChange={handleChange} 
-        className="h-8 pl-3 mr-0 md:mr-4 mb-5 rounded-2xl" 
+        className="h-8 pl-3 mr-0 md:mr-4 mb-5 rounded-2xl font-roboto" 
         type="text" 
         placeholder="username"
       />
       <input 
         name="fieldPassword" 
         onChange={handleChange} 
-        className="h-8 pl-3 mr-0 md:mr-4 rounded-2xl" 
+        className="h-8 pl-3 mr-0 md:mr-4 rounded-2xl font-roboto" 
         type="password" 
         placeholder="password"
       />

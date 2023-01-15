@@ -6,7 +6,7 @@ function Card(props) {
   const { cards, setCards, loading } = useContext(appContext);
   
   useEffect(() => {
-    console.log(cards);
+    // console.log(cards);
   });
 
   return(

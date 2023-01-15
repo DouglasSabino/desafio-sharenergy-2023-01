@@ -11,6 +11,8 @@ function ContextProvider({ children }) {
   const [indexStart, setIndexStart] = useState(0);
   const [indexEnd, setIndexEnd] = useState(8);
   const [page, setPage] = useState('1');
+  const [search, setSearch] = useState('');
+  const [filteredCards, setFilterredCards] = useState([]);
 
   const contextValue = {
     user, 
@@ -28,7 +30,11 @@ function ContextProvider({ children }) {
     indexEnd, 
     setIndexEnd,
     page, 
-    setPage
+    setPage,
+    search, 
+    setSearch,
+    filteredCards, 
+    setFilterredCards
   };
   
   return (
