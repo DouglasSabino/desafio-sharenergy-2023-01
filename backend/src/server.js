@@ -1,5 +1,6 @@
 // const { routerUser } = require('./routers/routerUser');
 const { routerLogin } = require('./routers/routerLogin');
+const { routerRememberMe } = require('./routers/routerRememberMe');
 const { handleError } = require('./middlewares/handleError');
 const express = require('express');
 const cors = require('cors');
@@ -17,6 +18,7 @@ app.use(cors());
 const { PORT } = process.env;
 
 app.use('/', routerLogin);
+app.use('/rememberme', routerRememberMe)
 app.use(handleError);
 
 app.listen(PORT, () => console.log(`Listen Port ${PORT}`));

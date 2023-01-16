@@ -18,7 +18,9 @@ function ContainerCards() {
     page,
     setPage,
     search,
-    setSearch
+    setSearch,
+    showDivPage, 
+    setShowDivPage
   } = useContext(appContext);
 
   const arrayAux = [];
@@ -28,6 +30,10 @@ function ContainerCards() {
     setCards(users);
     setLoading(false);
   }, []);
+
+  useEffect(() => {
+    search !== "" ? setShowDivPage(false) : setShowDivPage(true)
+  },[search]);
 
   const handleClick = ({ target }) => {
     if (target.innerText === '1') {
@@ -47,7 +53,6 @@ function ContainerCards() {
 
   const handleChange = ({ target }) => {
     setSearch(target.value);
-    console.log(search);
   }
 
   async function getRamdomUsers() {
@@ -80,29 +85,31 @@ function ContainerCards() {
             </div>
           ) : (
             <div>
-              <div className='ml-32 mt-5 mb-2 flex text-2xl'>
-                <spam className="font-roboto mr-2">Paginas: </spam>
-                <div
-                  onClick={handleClick}
-                  className={`border border-black hover:cursor-pointer font-roboto ${page === '1' ? "bg-[#407a79]" : "bg-[#54A3A2]"} mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}>
-                  1
-                </div>
-                <div
-                  onClick={handleClick}
-                  className={`border border-black hover:cursor-pointer font-roboto ${page === '2' ? "bg-[#407a79]" : "bg-[#54A3A2]"} mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}>
-                  2
-                </div>
-                <div
-                  onClick={handleClick}
-                  className={`border border-black hover:cursor-pointer font-roboto ${page === '3' ? "bg-[#407a79]" : "bg-[#54A3A2]"} mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}>
-                  3
+              <div className={`flex ml-32 mt-5 mb-2 text-2xl`}>
+                <div className={`${showDivPage ? "flex" : "hidden"}`}>
+                  <spam className="font-roboto mr-2">Paginas: </spam>
+                  <div
+                    onClick={handleClick}
+                    className={`border border-black hover:cursor-pointer font-roboto ${page === '1' ? "bg-[#407a79]" : "bg-[#54A3A2]"} mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}>
+                    1
+                  </div>
+                  <div
+                    onClick={handleClick}
+                    className={`border border-black hover:cursor-pointer font-roboto ${page === '2' ? "bg-[#407a79]" : "bg-[#54A3A2]"} mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}>
+                    2
+                  </div>
+                  <div
+                    onClick={handleClick}
+                    className={`border border-black hover:cursor-pointer font-roboto ${page === '3' ? "bg-[#407a79]" : "bg-[#54A3A2]"} mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}>
+                    3
+                  </div>
                 </div>
                 <div className='rounded-xl ml-auto mr-36'>
                   <input
                     onChange={handleChange}
                     type='text'
                     placeholder='Pesquisar'
-                    className='rounded-xl pl-2 shadow shadow-black font-roboto'
+                    className='rounded-xl pl-2 mb-3 shadow shadow-black font-roboto'
                   />
                 </div>
               </div>

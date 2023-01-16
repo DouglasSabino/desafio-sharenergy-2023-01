@@ -14,6 +14,24 @@ function LoginHeader() {
     setPassword 
   } = useContext(appContext);
 
+  const rememberMeClick = () => {
+    const token = localStorage.getItem('token');
+    console.log(token);
+    Axios.post('http://localhost:3001/rememberme', {},
+     { 
+      headers: { 
+        "Authorization": `${token}`
+      }
+     })
+     .then((response) => {
+        setUser(response.data)
+        history('/home');
+    }).catch((error) => {
+      console.log(error);
+      toast.error(error);
+    });
+  }
+
   const handleChange = ({target}) => {
     if (target.name === "fieldUser") {
       setUserName(target.value);
@@ -68,7 +86,8 @@ function LoginHeader() {
           className="bg-blue-800 md:bg-neutral-500 p-1 px-2 my-16 md:my-0 md:mr-3 flex md:block ml-auto mr-auto rounded-2xl"> 
           Entrar 
         </button>
-        <button 
+        <button
+          onClick={rememberMeClick} 
           className="bg-blue-800 md:bg-neutral-500 p-1 px-2 my-16 md:my-0 mr-4 rounded-2xl"> 
           Remember me
         </button>

@@ -1,7 +1,11 @@
 const Joi = require('joi');
 const { httpstatuscode } = require('../httpstatuscode');
 
-const knowErros = { };
+const knowErros = { 
+  TOKEN_NOT_FOUND: { 
+    code: `${httpstatuscode.NOT_FOUND}`, message: "Token Invalido, Por Favor faça o Login Novamente" 
+  },
+};
 
 /** @type {import('express').ErrorRequestHandler} */
 const handleError = (err, _req, res, _next) => {
