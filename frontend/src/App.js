@@ -1,6 +1,7 @@
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import RandomDog from "./pages/RandomDog";
 import ContextProvider from "./context/contextProvider";
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />}/>
             <Route path="/home" element={<Home />}/>
+            <Route path="random-dog" element={<RandomDog />}/>
             <Route path="*" element={<NotFound />}/>
           </Routes>
         </Router>

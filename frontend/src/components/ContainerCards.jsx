@@ -118,6 +118,7 @@ function ContainerCards() {
                   cards.slice(indexStart, indexEnd).map((card) => {
                     return (
                       <Card
+                        key={card.login.username}
                         picture={card.picture.large}
                         firstName={card.name.first}
                         lastName={card.name.last}
@@ -126,7 +127,7 @@ function ContainerCards() {
                         age={card.dob.age}
                       />
                     )
-                  }) : cards.slice(0, 8).map((card) => {
+                  }) : cards.slice(0, cards.length).map((card) => {
                     if (
                       card.name.first.toLowerCase().startsWith(search.toLowerCase()) ||
                       card.name.last.toLowerCase().startsWith(search.toLowerCase()) ||
@@ -135,6 +136,7 @@ function ContainerCards() {
                     ) {
                       return (
                         <Card
+                          key={card.login.username}
                           picture={card.picture.large}
                           firstName={card.name.first}
                           lastName={card.name.last}
