@@ -18,9 +18,7 @@ function ContainerCards() {
     page,
     setPage,
     search,
-    setSearch,
-    filteredCards,
-    setFilterredCards
+    setSearch
   } = useContext(appContext);
 
   const arrayAux = [];
@@ -121,12 +119,12 @@ function ContainerCards() {
                         age={card.dob.age}
                       />
                     )
-                  }) : cards.map((card) => {
+                  }) : cards.slice(0, 8).map((card) => {
                     if (
-                      card.name.first.includes(search) ||
-                      card.name.last.includes(search) ||
-                      card.email.includes(search) ||
-                      card.login.username.includes(search)
+                      card.name.first.toLowerCase().startsWith(search.toLowerCase()) ||
+                      card.name.last.toLowerCase().startsWith(search.toLowerCase()) ||
+                      card.email.toLowerCase().startsWith(search.toLowerCase()) ||
+                      card.login.username.toLowerCase().startsWith(search.toLowerCase())
                     ) {
                       return (
                         <Card
