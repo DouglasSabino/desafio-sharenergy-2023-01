@@ -13,6 +13,8 @@ function ContextProvider({ children }) {
   const [page, setPage] = useState('1');
   const [search, setSearch] = useState('');
   const [showDivPage, setShowDivPage] = useState(true);
+  const [randomDogImage, setRandomDogImage] = useState('');
+  const [arrayDogImage, setArrayDogImage] = useState([]);
 
   const contextValue = {
     user, 
@@ -34,7 +36,11 @@ function ContextProvider({ children }) {
     search, 
     setSearch,
     showDivPage,
-    setShowDivPage
+    setShowDivPage,
+    randomDogImage,
+    setRandomDogImage,
+    arrayDogImage,
+    setArrayDogImage
   };
   
   return (

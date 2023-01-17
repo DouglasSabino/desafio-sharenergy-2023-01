@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import Axios from 'axios';
 import appContext from "../context/appContext";
+import Axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +16,6 @@ function LoginHeader() {
 
   const rememberMeClick = () => {
     const token = localStorage.getItem('token');
-    console.log(token);
     Axios.post('http://localhost:3001/rememberme', {},
      { 
       headers: { 
@@ -27,18 +26,15 @@ function LoginHeader() {
         setUser(response.data)
         history('/home');
     }).catch((error) => {
-      console.log(error);
-      toast.error(error);
+      toast.error(error.response.data.message);
     });
   }
 
   const handleChange = ({target}) => {
     if (target.name === "fieldUser") {
       setUserName(target.value);
-      console.log(username);
     } else {
       setPassword(target.value);
-      console.log(password);
     }
   };
 
@@ -52,7 +48,6 @@ function LoginHeader() {
      toast.success(`Olá ${res.data[0].user}, login efetuado com sucesso !!`);
      history("/home");
     }).catch((e) => {
-      console.log(e);
       toast.error(e.response.data.message);
     });
   }
