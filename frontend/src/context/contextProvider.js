@@ -15,6 +15,8 @@ function ContextProvider({ children }) {
   const [showDivPage, setShowDivPage] = useState(true);
   const [randomDogImage, setRandomDogImage] = useState('');
   const [arrayDogImage, setArrayDogImage] = useState([]);
+  const [catImage, setCatImage] = useState('primary');
+  const [httpCode, setHttpCode] = useState('');
 
   const contextValue = {
     user, 
@@ -40,7 +42,11 @@ function ContextProvider({ children }) {
     randomDogImage,
     setRandomDogImage,
     arrayDogImage,
-    setArrayDogImage
+    setArrayDogImage,
+    catImage,
+    setCatImage,
+    httpCode,
+    setHttpCode
   };
   
   return (

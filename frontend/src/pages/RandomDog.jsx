@@ -59,11 +59,11 @@ function RandomDog() {
           </button>
         {
           loading ? (
-            <div className="relative ml-auto mr-auto">
+            <div className="relative ml-auto mr-auto mt-36">
               <Loading />
             </div>
           ) : (
-            <div className="mr-20 relative">
+            <div className="relative">
               <img className="object-contain mt-36 h-80 w-80 m-auto" src={randomDogImage} alt="Imagem de cachorro aleatoria" />
             </div>
           )
