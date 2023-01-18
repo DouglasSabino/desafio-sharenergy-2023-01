@@ -1,10 +1,9 @@
-const { connection } = require('./mongoConnection');
+const User = require('../models/User');
 
 const loginModel = {
   login: async (body) => {
-    const db = await connection();
     const { username } = body;
-    const [user] = await db.collection('user').find({ user: username }).toArray();
+    const [user] = await User.find({ user: username });
     return user;
   },
 };

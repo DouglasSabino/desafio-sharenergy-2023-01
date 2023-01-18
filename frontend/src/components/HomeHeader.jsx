@@ -24,6 +24,10 @@ function HomeHeader() {
     history('/http-cat');
   }
 
+  const clickClient = () => {
+    history('/clients');
+  }
+
   return(
     <div className="flex justify-between h-20 bg-[#54A3A2] shadow font-roboto shadow-black">
       <div className="text-2xl pl-5 pt-5">
@@ -55,7 +59,7 @@ function HomeHeader() {
         </div>
         <div
          ref={clientRef}  
-         //onClick={handleClick} 
+         onClick={clickClient} 
          className="hover:cursor-pointer text-[3vw] mt-3 mr-32 active:text-white"
        >
          <FaRegIdCard />
