@@ -12,6 +12,12 @@ const clientsServices = {
     .catch((err) => console.log(err));
     return client;
   },
+  getAll: async () => {
+    const clients = Clients.find()
+    .then((doc) => doc)
+    .catch((err) => console.log(err));
+    return clients;
+  },
   updateOne: async (body, id) => {
     const { nome, email, telefone, endereco , CPF } = body;
     const newClient = { nome, email, telefone, endereco , CPF }

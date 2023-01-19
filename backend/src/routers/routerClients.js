@@ -7,6 +7,7 @@ const routerClients = express.Router();
 routerClients.post('/', handlerTokenValidation, clientsController.register);
 
 routerClients.get('/:id', handlerTokenValidation, clientsController.getOne);
+routerClients.get('/', handlerTokenValidation, clientsController.getAll);
 
 routerClients.put('/:id', handlerTokenValidation, clientsController.updateOne);
 

@@ -4,6 +4,7 @@ import appContext from './appContext';
 
 function ContextProvider({ children }) {
   const [user, setUser] = useState({});
+  const [clients, setClients] = useState([]);
   const [cards, setCards] = useState([]);
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -26,6 +27,8 @@ function ContextProvider({ children }) {
   const contextValue = {
     user, 
     setUser,
+    clients, 
+    setClients,
     cards,
     setCards,
     username,

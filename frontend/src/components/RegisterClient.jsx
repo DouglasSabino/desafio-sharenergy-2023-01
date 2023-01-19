@@ -5,7 +5,9 @@ import appContext from "../context/appContext";
 import Axios from "axios";
 
 function RegisterClient() {
-  const { 
+  const {
+    clients,
+    setClients, 
     clientName, 
     setClientName, 
     clientEmail, 
@@ -15,7 +17,8 @@ function RegisterClient() {
     clientAddres, 
     setClientAddres,
     clientCPF, 
-    setClientCPF
+    setClientCPF,
+    setLoading
     } = useContext(appContext);
 
   const handleChange = ({target}) => {
@@ -33,6 +36,7 @@ function RegisterClient() {
   }
 
   const handleClick = () => {
+    setLoading(true);
     Axios.post('http://localhost:3001/clients/', {
        nome: clientName,
        email: clientEmail,
@@ -45,14 +49,18 @@ function RegisterClient() {
         }
     }).then((response) => {
         toast.success(response.data);
+        setClients((prevClients) => [...prevClients, response.data]);
+        setClientName('');
+        setClientEmail('');
+        setClientPhone('');
+        setClientAddres('');
+        setClientCPF('');
+        setLoading(false);
     }) 
-    .catch((err) => toast.error(err.response.data.message));
-
-    setClientName('');
-    setClientEmail('');
-    setClientPhone('');
-    setClientAddres('');
-    setClientCPF('');
+    .catch((err) => {
+      toast.error(err.response.data.message)
+      setLoading(false);
+    });
   }
 
   return (
@@ -61,6 +69,7 @@ function RegisterClient() {
       <div className='flex'>
         <div className='bg-[#54A3A2] w-96 h-96 mt-10 ml-10 text-center rounded-2xl shadow-xl shadow-black'>
           <input
+            value={clientName}
             onChange={handleChange}
             name="name"
             type="text"
@@ -68,6 +77,7 @@ function RegisterClient() {
             className='mt-10 font-roboto rounded-2xl shadow-md pl-5 shadow-black'
           />
           <input
+            value={clientEmail}
             onChange={handleChange}
             name="email"
             type="text"
@@ -75,6 +85,7 @@ function RegisterClient() {
             className='mt-5 font-roboto rounded-2xl shadow-md pl-5 shadow-black'
           />
           <input
+            value={clientPhone}
             onChange={handleChange}
             name="phone"
             type="text"
@@ -82,6 +93,7 @@ function RegisterClient() {
             className='mt-5 font-roboto rounded-2xl shadow-md pl-5 shadow-black'
           />
           <input
+            value={clientAddres}
             onChange={handleChange}
             name="addres"
             type="text"
@@ -89,6 +101,7 @@ function RegisterClient() {
             className='mt-5 font-roboto rounded-2xl shadow-md pl-5 shadow-black'
           />
           <input
+            value={clientCPF}
             onChange={handleChange}
             name="CPF"
             type="text"

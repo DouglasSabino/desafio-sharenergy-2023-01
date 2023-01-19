@@ -24,6 +24,15 @@ const clientsController = {
     }
   },
   /** @type {import('express').RequestParamHandler} */
+  getAll: async (req, res, next) => {
+    try {
+      const clients = await clientsServices.getAll();
+      return res.status(httpstatuscode.OK).json(clients);
+    } catch (error) {
+      next(error);
+    }
+  },
+  /** @type {import('express').RequestParamHandler} */
   updateOne: async (req, res, next) => {
     try {
       const { id } = req.params;
