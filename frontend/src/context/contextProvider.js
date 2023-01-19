@@ -17,6 +17,11 @@ function ContextProvider({ children }) {
   const [arrayDogImage, setArrayDogImage] = useState([]);
   const [catImage, setCatImage] = useState('primary');
   const [httpCode, setHttpCode] = useState('');
+  const [clientName, setClientName] = useState('');
+  const [clientEmail, setClientEmail] = useState('');
+  const [clientPhone, setClientPhone] = useState('');
+  const [clientAddres, setClientAddres] = useState('');
+  const [clientCPF, setClientCPF] = useState('');
 
   const contextValue = {
     user, 
@@ -46,7 +51,17 @@ function ContextProvider({ children }) {
     catImage,
     setCatImage,
     httpCode,
-    setHttpCode
+    setHttpCode,
+    clientName,
+    setClientName,
+    clientEmail, 
+    setClientEmail,
+    clientPhone, 
+    setClientPhone,
+    clientAddres, 
+    setClientAddres,
+    clientCPF, 
+    setClientCPF
   };
   
   return (

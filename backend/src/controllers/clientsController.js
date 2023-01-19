@@ -34,6 +34,7 @@ const clientsController = {
       next(error);
     }
   },
+  /** @type {import('express').RequestParamHandler} */
   delete: async (req, res, next) => {
     try {
       const { id } = req.params;
