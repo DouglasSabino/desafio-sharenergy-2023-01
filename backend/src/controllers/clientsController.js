@@ -8,7 +8,7 @@ const clientsController = {
     try {
       await schemaClients.createValidation(req.body);
       await clientsServices.register(req.body);
-      return res.status(httpstatuscode.OK).json('cadastrado');
+      return res.status(httpstatuscode.OK).json('Cadastrado com Sucesso');
     } catch (error) {
       next(error); 
     }
@@ -22,7 +22,27 @@ const clientsController = {
     } catch (error) {
       next(error);
     }
-  }
+  },
+  /** @type {import('express').RequestParamHandler} */
+  updateOne: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      await schemaClients.createValidation(req.body);
+      await clientsServices.updateOne(req.body, id);
+      return res.status(httpstatuscode.OK).json('Atualizado com Sucesso');
+    } catch (error) {
+      next(error);
+    }
+  },
+  delete: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      await clientsServices.delete(id);
+      return res.status(httpstatuscode.OK).json('Usuario Deletado');
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 module.exports = { clientsController }
