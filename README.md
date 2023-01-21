@@ -51,7 +51,7 @@
 
 <details>
  <summary><strong>Modelo dos documentos MongoDB</strong></summary><br />
- <img src="" alt="modelo-mongoDB">
+ <img src="https://github.com/SHARENERGY-OFICIAL/desafio-sharenergy-2023-01/blob/7fc8a7af42a145a5fde0e0187e5e07c7c48498b2/backend/modelo-mongoDb.png?raw=true" alt="modelo-mongoDB">
 </details>
 
 <h2>Ferramentas e tecnologias utilizadas</h2>
