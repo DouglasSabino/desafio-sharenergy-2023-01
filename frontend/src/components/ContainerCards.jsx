@@ -80,7 +80,11 @@ function ContainerCards() {
       {
         loading ?
           (
-            <div className="border border-black ml-auto flex flex-wrap justify-around gap-2 pt-6 mt-16 pt-52 shadow-lg shadow-black mr-auto h-[80vh] mt-3 w-[100rem] md:bg-[#54A3A2] rounded-2xl shadow-2xl shadow-black pb-5">
+            <div className="border border-black ml-auto flex 
+            flex-wrap justify-around gap-2 pt-6 mt-16 pt-52 
+            shadow-lg shadow-black mr-auto h-[80vh] w-[100rem] 
+            md:bg-[#54A3A2] rounded-2xl shadow-2xl shadow-black pb-5"
+          >
               <Loading />
             </div>
           ) : (
@@ -90,17 +94,26 @@ function ContainerCards() {
                   <spam className="font-roboto mr-2">Paginas: </spam>
                   <div
                     onClick={handleClick}
-                    className={`border border-black hover:cursor-pointer font-roboto ${page === '1' ? "bg-[#407a79]" : "bg-[#54A3A2]"} mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}>
+                    className={`border border-black hover:cursor-pointer 
+                    font-roboto ${page === '1' ? "bg-[#407a79]" : "bg-[#54A3A2]"} 
+                    mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}
+                  >
                     1
                   </div>
                   <div
                     onClick={handleClick}
-                    className={`border border-black hover:cursor-pointer font-roboto ${page === '2' ? "bg-[#407a79]" : "bg-[#54A3A2]"} mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}>
+                    className={`border border-black hover:cursor-pointer 
+                    font-roboto ${page === '2' ? "bg-[#407a79]" : "bg-[#54A3A2]"} 
+                    mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}
+                  >
                     2
                   </div>
                   <div
                     onClick={handleClick}
-                    className={`border border-black hover:cursor-pointer font-roboto ${page === '3' ? "bg-[#407a79]" : "bg-[#54A3A2]"} mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}>
+                    className={`border border-black hover:cursor-pointer 
+                    font-roboto ${page === '3' ? "bg-[#407a79]" : "bg-[#54A3A2]"} 
+                    mr-2 p-1 px-2 rounded-xl shadow-2xl shadow-black`}
+                  >
                     3
                   </div>
                 </div>
@@ -113,7 +126,10 @@ function ContainerCards() {
                   />
                 </div>
               </div>
-              <div className="border border-black ml-auto flex flex-wrap justify-around gap-2 pt-6 mr-auto h-[80vh] mt-3 w-[100rem] md:bg-[#54A3A2] rounded-2xl shadow-2xl shadow-black pb-5">
+              <div className="border border-black ml-auto flex flex-wrap 
+              justify-around gap-2 pt-6 mr-auto h-[80vh] mt-3 w-[100rem] 
+              md:bg-[#54A3A2] rounded-2xl shadow-2xl shadow-black pb-5"
+              >
                 {search === '' ?
                   cards.slice(indexStart, indexEnd).map((card) => {
                     return (

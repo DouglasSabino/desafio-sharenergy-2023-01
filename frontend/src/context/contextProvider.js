@@ -5,6 +5,7 @@ import appContext from './appContext';
 function ContextProvider({ children }) {
   const [user, setUser] = useState({});
   const [clients, setClients] = useState([]);
+  const [client, setClient] = useState({});
   const [cards, setCards] = useState([]);
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -23,6 +24,9 @@ function ContextProvider({ children }) {
   const [clientPhone, setClientPhone] = useState('');
   const [clientAddres, setClientAddres] = useState('');
   const [clientCPF, setClientCPF] = useState('');
+  const [edit, setEdit] = useState(false);
+  const [idToEdit, setIdToEdit] = useState('');
+  const [update, setUpdate] = useState(false);
 
   const contextValue = {
     user, 
@@ -64,7 +68,15 @@ function ContextProvider({ children }) {
     clientAddres, 
     setClientAddres,
     clientCPF, 
-    setClientCPF
+    setClientCPF,
+    client, 
+    setClient,
+    edit,
+    setEdit,
+    idToEdit,
+    setIdToEdit,
+    update,
+    setUpdate
   };
   
   return (

@@ -50,11 +50,14 @@ function RandomDog() {
   return (
     <div className='md:h-screen md:w-full bg-sky-500/50'>
       <HomeHeader />
-      <div className="border border-black ml-auto mt-16 pt-10 pb-50 shadow-lg shadow-black mr-auto h-[80vh] mt-3 w-[100rem] md:bg-[#54A3A2] rounded-2xl">
+      <div className="border border-black ml-auto mt-16 pt-10 pb-50 
+      shadow-lg shadow-black mr-auto h-[80vh] mt-3 w-[100rem] md:bg-[#54A3A2] rounded-2xl">
         <div className='flex flex-col justify-center'>
           <button
             onClick={changeDog} 
-            className='hover:cursor-pointer font-roboto mx-20 text-center justify-center border border-black p-5 rounded-2xl shadow-lg shadow-black active:bg-[#407a79] active:shadow-none'>
+            className='hover:cursor-pointer font-roboto mx-20 text-center 
+            justify-center border border-black p-5 rounded-2xl shadow-lg shadow-black 
+            active:bg-[#407a79] active:shadow-none'>
               Cliqui Aqui :)
           </button>
         {
@@ -64,7 +67,11 @@ function RandomDog() {
             </div>
           ) : (
             <div className="relative">
-              <img className="object-contain mt-36 h-80 w-80 m-auto" src={randomDogImage} alt="Imagem de cachorro aleatoria" />
+              <img 
+                className="object-contain mt-36 h-80 w-80 m-auto" 
+                src={randomDogImage} 
+                alt="Imagem de cachorro aleatoria" 
+              />
             </div>
           )
         }

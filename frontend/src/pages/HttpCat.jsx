@@ -39,11 +39,17 @@ function RandomDog() {
             />
             <button
               onClick={handleClick} 
-              className='hover:cursor-pointer font-roboto text-center justify-center border border-black p-2 rounded-2xl shadow-lg shadow-black active:bg-[#407a79] active:shadow-none'>
+              className='hover:cursor-pointer font-roboto text-center 
+              justify-center border border-black p-2 rounded-2xl shadow-lg 
+              shadow-black active:bg-[#407a79] active:shadow-none'>
                 Pesquisar
             </button>
             <div className='h-300 w-200'>
-              <img className='mt-7 shadow-xl shadow-black ml-auto mr-auto' src={catImage} alt='deu bom'/>
+              <img 
+                className='mt-7 shadow-xl shadow-black ml-auto mr-auto' 
+                src={catImage} 
+                alt='deu bom'
+              />
             </div>
           </div>
         </div>

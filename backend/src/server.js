@@ -25,6 +25,9 @@ app.use('/clients', routerClients);
 app.use('/user', routerUser);
 app.use(handleError);
 
+
+// sei que não é uma boa pratica colocar a string de conexão 'hard code', 
+// fiz dessa forma por se tratar de um teste para que qualquer um tenha acesso a minha base de dados.  
 mongoose.connect('mongodb+srv://sabino:mGxzIAAmO5D0zcB0@sharenergydb.fipeurz.mongodb.net/?retryWrites=true&w=majority')
 .then(() => {
   app.listen(PORT, () => console.log(`Listen Port ${PORT}`));

@@ -78,12 +78,17 @@ function LoginHeader() {
       <div className="md:flex block">
         <button
           onClick={login} 
-          className="bg-blue-800 md:bg-neutral-500 p-1 px-2 my-16 md:my-0 md:mr-3 flex md:block ml-auto mr-auto rounded-2xl"> 
+          className="
+          font-roboto bg-blue-800 md:bg-neutral-500 
+          p-1 px-2 my-16 md:my-0 md:mr-3 flex md:block 
+          ml-auto mr-auto rounded-2xl"> 
           Entrar 
         </button>
         <button
           onClick={rememberMeClick} 
-          className="bg-blue-800 md:bg-neutral-500 p-1 px-2 my-16 md:my-0 mr-4 rounded-2xl"> 
+          className="font-roboto bg-blue-800 md:bg-neutral-500 
+          p-1 px-2 my-16 md:my-0 mr-4 rounded-2xl"
+        > 
           Remember me
         </button>
       </div>

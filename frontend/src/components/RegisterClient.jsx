@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { toast } from 'react-toastify'
-import { IoPersonAddSharp } from "react-icons/io5";
+import { IoPersonAddSharp, IoSave } from "react-icons/io5";
 import appContext from "../context/appContext";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function RegisterClient() {
+  const history = useNavigate();
   const {
     clients,
     setClients, 
@@ -18,8 +20,32 @@ function RegisterClient() {
     setClientAddres,
     clientCPF, 
     setClientCPF,
-    setLoading
+    setLoading,
+    edit,
+    idToEdit,
+    setEdit,
+    setUpdate
     } = useContext(appContext);
+
+    useEffect(() => {
+      setEdit(false);
+      console.log(edit);
+      Axios.get('http://localhost:3001/clients/', {
+        headers: {
+          Authorization: localStorage.getItem('token')
+        }
+      }).then((doc) => {
+        setClients(doc.data);
+        setLoading(false);
+      }
+      )
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      }
+      
+      );
+    }, []);
 
   const handleChange = ({target}) => {
     if (target.name === 'name') {
@@ -33,6 +59,35 @@ function RegisterClient() {
     } else if (target.name === 'CPF') {
       setClientCPF(target.value);
     }
+  }
+
+  const handleEdit = async () => {
+    await Axios.put(`http://localhost:3001/clients/${idToEdit}`, {
+      nome: clientName,
+      email: clientEmail,
+      telefone: clientPhone,
+      endereco: clientAddres,
+      CPF: clientCPF
+    }, {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      }
+    }).then((doc) => {
+      toast.success(doc.data);
+      setClientName('');
+      setClientEmail('');
+      setClientPhone('');
+      setClientAddres('');
+      setClientCPF('');
+      setEdit(false);
+      setUpdate(true);
+      history('/clients');
+    })
+    .catch((err) => {
+      console.log(err.response.data.message);
+      toast.error(err.response.data.message)
+    }
+    );
   }
 
   const handleClick = () => {
@@ -65,9 +120,15 @@ function RegisterClient() {
 
   return (
     <div>
-      <h1 className='font-roboto text-2xl ml-24 mt-20'>Cadastrar Novo Cliente</h1>
+      {
+        edit ?
+        (<h1 className='font-roboto text-[40px] text-center ml-10 mt-20'>Editar Cliente</h1>)
+        :
+        (<h1 className='font-roboto text-[30px] flex flex-wrap ml-20 mt-20'>Cadastrar Novo Cliente</h1>)
+      }
       <div className='flex'>
-        <div className='bg-[#54A3A2] w-96 h-96 mt-10 ml-10 text-center rounded-2xl shadow-xl shadow-black'>
+        <div className='bg-[#54A3A2] w-96 h-96 mt-10 ml-10 
+        text-center rounded-2xl shadow-xl shadow-black'>
           <input
             value={clientName}
             onChange={handleChange}
@@ -108,9 +169,27 @@ function RegisterClient() {
             placeholder='CPF'
             className='mt-5 font-roboto rounded-2xl shadow-md pl-5 shadow-black'
           />
-          <div onClick={handleClick} className="hover:cursor-pointer pl-50 ml-40 text-[3vw] mt-10 active:text-white">
+
+          {
+          edit ?
+          (
+            <div 
+              onClick={handleEdit} 
+              className="hover:cursor-pointer pl-50 ml-40 text-[3vw] 
+              mt-10 active:text-white">
+              <IoSave />
+            </div>
+          )
+          : 
+          (
+          <div 
+            onClick={handleClick} 
+            className="hover:cursor-pointer pl-50 ml-40 text-[3vw] 
+            mt-10 active:text-white">
             <IoPersonAddSharp />
           </div>
+          )
+          }
         </div>
       </div>
         </div>
